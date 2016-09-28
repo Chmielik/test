@@ -9,11 +9,20 @@ function MWPjs(data) {
     throw("undefined position");
   }
 
-  //remove any other bars
+  //is there any other bar?
   var bars = document.getElementsByClassName('test-widget');
 
-  while(bars[0]) {
-    bars[0].parentNode.removeChild(bars[0]);
+  if(bars.length > 0) {
+    //do you want to open currently opened bar?
+    var classes = bars[0].getAttribute("class").split(" ");
+    if(classes[2] === this.position) {
+      //you want to open currently opened
+    } else {
+      while(bars[0]) {
+        //remove any other bars
+        bars[0].parentNode.removeChild(bars[0]);
+      }
+    }
   }
 
   makePrefix = function() {
@@ -29,12 +38,14 @@ function MWPjs(data) {
   this.prefix = makePrefix();
   //init bar
   var widgetContainer = document.createElement('div');
-  widgetContainer.setAttribute('class', 'test-widget ' + this.prefix);
   widgetContainer.setAttribute('id', 'widget');
   if (this.position === "top") {
     widgetContainer.style.top = "-33px";
+    widgetContainer.setAttribute('class', 'test-widget ' + this.prefix + ' top');
+
   } else {
     widgetContainer.style.bottom = "-33px";
+    widgetContainer.setAttribute('class', 'test-widget ' + this.prefix + ' bottom');
   }
 
   var widgetLogo = document.createElement('a');
@@ -68,11 +79,17 @@ function MWPjs(data) {
   if (widgetButton.innerText) {
     widgetButton.innerText = 'Take our survey';
   }
+  widgetButton.onclick = function() {
+    this.clickOk();
+  }
   widgetCenter.appendChild(widgetButton);
 
   var widgetClose = document.createElement('span');
   widgetClose.setAttribute('class', 'test-widget_close');
   widgetClose.setAttribute('id', 'close');
+  widgetClose.onclick = function() {
+    this.close();
+  }
   widgetContainer.appendChild(widgetClose);
 
   //put bar to body
