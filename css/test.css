@@ -17,6 +17,7 @@ html, body {
   transition: all 500ms cubic-bezier(.455,.03,.515,.955);
   box-sizing: content-box;
   height: 23px;
+  font-size: 14px;
 }
 
 .test-widget a, .test-widget a:active, .test-widget a:hover, .test-wiget a:focus, .test-widget a:visited {
@@ -74,5 +75,13 @@ a.test-widget_logo, a.test-widget_close {
 @media screen and (max-width: 768px) {
   .test-widget {
     font-size: 12px;
+    height: auto;
+  }
+
+  .test-widget_button {
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+    padding: 0;
   }
 }

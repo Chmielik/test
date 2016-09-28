@@ -3,6 +3,15 @@
   <head>
   	<title>test widget - preview</title>
     <link rel="stylesheet" type="text/css" href="css/test.css">
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        font-size: 14px;
+      }
+    </style>
   </head>
   <body>
     <a href="#" id="top" style="position: absolute; top: 150px;">top bar</a>
@@ -16,8 +25,8 @@
       function topBar() {
         var myBar = new MWPjs({
           message: 'msg here - Beautiful and simple website widgets',
-          close: function(){ alert('pushed x') },
-          clickOk: function(){ alert('pushed ok') },
+          close: function(){ console.log(1) },
+          clickOk: function(){ console.log(1) },
           position: 'top'
         });
       }
@@ -25,8 +34,8 @@
       function bottomBar() {
         var myBar = new MWPjs({
           message: 'Beautiful and simple website widgets',
-          close: function(){ alert('pushed x') },
-          clickOk: function(){ alert('pushed ok') },
+          close: function(){ console.log(1) },
+          clickOk: function(){ console.log(1) },
           position: 'bottom'
         });
       }

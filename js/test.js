@@ -40,11 +40,9 @@ function MWPjs(data) {
   var widgetContainer = document.createElement('div');
   widgetContainer.setAttribute('id', 'widget');
   if (this.position === "top") {
-    widgetContainer.style.top = "-33px";
     widgetContainer.setAttribute('class', 'test-widget ' + this.prefix + ' top');
 
   } else {
-    widgetContainer.style.bottom = "-33px";
     widgetContainer.setAttribute('class', 'test-widget ' + this.prefix + ' bottom');
   }
 
@@ -98,6 +96,7 @@ function MWPjs(data) {
   }
 
   if (this.position === "top") {
+    widgetContainer.style.top = "-" + widgetContainer.offsetHeight + "px";
     setTimeout(function() {document.getElementById("widget").style.top = "0";}, 100);
     document.getElementById("close").onclick = function() {
       data.close();
@@ -105,6 +104,7 @@ function MWPjs(data) {
       setTimeout(function() { widgetContainer.parentNode.removeChild(widgetContainer);}, 500);
     };
   } else if(this.position === "bottom") {
+    widgetContainer.style.bottom = "-" + widgetContainer.offsetHeight + "px";
     setTimeout(function() {document.getElementById("widget").style.bottom = "0";}, 100);
     document.getElementById("close").onclick = function() {
       data.close();
