@@ -5,21 +5,31 @@
     <link rel="stylesheet" type="text/css" href="css/test.css">
   </head>
   <body>
-  	<div class="test-widget">
-      <a href="#" class="test-widget_logo" title="Some text">
-        test
-      </a>
-      <div class="test-widget_center">
-        <span class="test-widget_text">
-          Did you find what you were looking for on our website?
-        </span>
-        <a href="#" class="test-widget_button">
-          Take our survey
-        </a>
-      </div>
-      <span class="test-widget_close">
-        &#10006;
-      </span>
-    </div>
+    <a href="#" id="top" style="position: absolute; top: 150px;">top bar</a>
+    <a href="#" id="bottom" style="position: absolute; top: 150px; left: 50px;">bottom bar</a>
+    <div style="height: 1500px;"></div>
+    <script type="text/javascript" src="js/test.js"></script>
+    <script type="text/javascript">
+      document.getElementById('top').setAttribute('onclick', 'topBar()');
+      document.getElementById('bottom').setAttribute('onclick','bottomBar()');
+
+      function topBar() {
+        var myBar = new MWPjs({
+          message: 'msg here - Beautiful and simple website widgets',
+          close: function(){ alert('pushed x') },
+          clickOk: function(){ alert('pushed ok') },
+          position: 'top'
+        });
+      }
+
+      function bottomBar() {
+        var myBar = new MWPjs({
+          message: 'Beautiful and simple website widgets',
+          close: function(){ alert('pushed x') },
+          clickOk: function(){ alert('pushed ok') },
+          position: 'bottom'
+        });
+      }
+    </script>
   </body>
 </html>
