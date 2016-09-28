@@ -75,6 +75,7 @@ function MWPjs(data) {
   widgetButton.setAttribute('class', 'test-widget_button');
   widgetButton.setAttribute('text', 'Take our survey');
   widgetButton.setAttribute('href', '#');
+  widgetButton.setAttribute('id', 'button');
   widgetButton.textContent = 'Take our survey';
   if (widgetButton.innerText) {
     widgetButton.innerText = 'Take our survey';
@@ -87,24 +88,26 @@ function MWPjs(data) {
   var widgetClose = document.createElement('span');
   widgetClose.setAttribute('class', 'test-widget_close');
   widgetClose.setAttribute('id', 'close');
-  widgetClose.onclick = function() {
-    this.close();
-  }
   widgetContainer.appendChild(widgetClose);
 
   //put bar to body
   document.body.appendChild(widgetContainer);
   document.getElementById("close").innerHTML = "&#10006;";
+  document.getElementById("button").onclick = function() {
+    data.clickOk();
+  }
 
   if (this.position === "top") {
     setTimeout(function() {document.getElementById("widget").style.top = "0";}, 100);
     document.getElementById("close").onclick = function() {
+      data.close();
       document.getElementById("widget").style.top = "-100px";
       setTimeout(function() { widgetContainer.parentNode.removeChild(widgetContainer);}, 500);
     };
   } else if(this.position === "bottom") {
     setTimeout(function() {document.getElementById("widget").style.bottom = "0";}, 100);
     document.getElementById("close").onclick = function() {
+      data.close();
       document.getElementById("widget").style.bottom = "-100px";
       setTimeout(function() { widgetContainer.parentNode.removeChild(widgetContainer);}, 500);
     };
