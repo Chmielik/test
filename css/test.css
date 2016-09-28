@@ -10,7 +10,13 @@ html, body {
 	background-color: #363d4d;
   color: #FFF;
   text-align: center;
-  padding: 10px 5px;
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 10px);
+  -webkit-transition: top 500ms cubic-bezier(.455,.03,.515,.955);
+  transition: top 500ms cubic-bezier(.455,.03,.515,.955);
+  box-sizing: content-box;
 }
 
 .test-widget a, .test-widget a:active, .test-widget a:hover, .test-wiget a:focus, .test-widget a:visited {
@@ -20,6 +26,12 @@ html, body {
 
 .test-widget_logo {
   float: left;
+  line-height: 23px;
+}
+
+.test-widget_center {
+  display: inline-block;
+  width: calc(100% - 43px);
 }
 
 .test-widget_text {
@@ -31,6 +43,7 @@ html, body {
   padding: 5px 10px;
   border-radius: 2px;
   transition: background-color .2s ease-out;
+  line-height: 23px;
 }
 
 .test-widget_button:hover {
@@ -44,13 +57,22 @@ html, body {
   opacity: .5;
   cursor: pointer;
   width: 20px;
+  line-height: 23px;
 }
 
 .test-widget_close:hover {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
   transform: rotate(90deg);
   opacity: 1;
 }
 
 a.test-widget_logo, a.test-widget_close {
   color: #f4f4f4;
+}
+
+@media screen and (max-width: 768px) {
+  .test-widget {
+    font-size: 12px;
+  }
 }
